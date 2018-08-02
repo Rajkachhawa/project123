@@ -1,0 +1,196 @@
+dhclient -v br0   to get the IP at real time.
+
+
+to install java 
+
+open browser and ftp://192.168.10.254
+
+ and to install and execute
+
+rpm   -ivh (and the path) ftp://192.168.10.254/pub/ashutoshh/jdk-8u121-linux-x64.rpm
+
+
+to check if installed 
+
+rpm -q firefox
+
+rpm -q vlc
+
+will inform that softwae is installed or not on the machine.
+
+to find the path for the environment variable
+
+rpm -ql jdk1.8.0_121
+
+we will get
+
+/usr/java/jdk1.8.0_121
+copy this and to set path
+
+JAVA_HOME=/usr/java/jdk1.8.0_121
+
+to remain it permanently
+
+vim /root/.bashrc
+
+open it and insert the path here.
+and and add another line
+
+PATH=$JAVA_HOME/bin:$PATH
+
+by make path variable global by
+
+
+export PATH
+
+
+and save it by :wq and press ENTER.
+ 
+now 
+
+source /root/.bashrc
+to check path is set or not 
+
+
+jps
+ it should give output as
+
+543486 Jps(Number can be random)
+
+
+How to install Hadoop ?
+
+
+to check free RAM 
+
+free -m
+
+now cd /etc/hadoop
+and list files in here
+
+(  hdfs-site.xml)
+
+and open this file 
+vim  hdfs-site.xml
+
+and in this file we will see
+ configuration
+
+
+here write (to declare you are name node or data node)
+
+<configuration>
+<property>
+
+<name>dfs.name.dir(this name will decide whether it is data node or name node to declare it data node write name instead of name) </name>
+<value>(it is the location where dat would be stored)/rajkumar</value>
+
+</property>
+</configuration>
+ now save and exit
+
+
+to check how much space is availabel in /  
+df -h 
+
+how  data node and name node will communicate ???/
+it is done by opening
+vim core-site.xml
+
+<configuration>
+<property>
+
+<name>fs.default.name</name>
+<value>hdfs://192.168.10.191:10001(name node IP and port)</value>
+
+</property>
+</configuration>
+ now save and exit
+
+iptables -F to allow firewall
+
+
+ssh 192. ...... to access IP
+
+to store data  ??
+
+
+iptables -F
+hadoop  fs  -ls   /
+
+
+###################IN MR(map reduce) there is job tracker and 2nd is task tracker.
+
+
+<configuration>
+<property>
+
+<name>mapred.job.tracker</name>
+<value>192.168.10.191:9001</value>
+
+</property>
+</configuration>
+ now save and exit
+
+
+and now hadoop-daemon.sh start tasktracker
+and check with jps
+
+It is also distributed processing machine.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
